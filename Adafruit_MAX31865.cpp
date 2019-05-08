@@ -157,11 +157,9 @@ float  Adafruit_MAX31865::temperature(float RTDnominal, float refResistor) {
 uint16_t Adafruit_MAX31865::readRTD (void) {
   clearFault();
   enableBias(true);
-  delay(10);
   uint8_t t = readRegister8(MAX31856_CONFIG_REG);
   t |= MAX31856_CONFIG_1SHOT;      
   writeRegister8(MAX31856_CONFIG_REG, t);
-  delay(65);
 
   uint16_t rtd = readRegister16(MAX31856_RTDMSB_REG);
 
